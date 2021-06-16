@@ -12,3 +12,20 @@ function verifyLogin() {
 }
 const loginVerify = document.querySelector('#buttonLogin');
 loginVerify.addEventListener('click', verifyLogin);
+
+function verifyCheckBox() {
+  const checkBox = document.querySelector('#agreement');
+  const sendBtn = document.querySelector('#submit-btn');
+  if (checkBox.checked === true) {
+    sendBtn.disabled = false;
+  } else {
+    sendBtn.disabled = true;
+  }
+}
+
+function sendInformations() {
+  const checkBox = document.querySelector('#agreement');
+  checkBox.addEventListener('click', verifyCheckBox);
+}
+
+sendInformations();
