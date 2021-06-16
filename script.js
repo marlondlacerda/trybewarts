@@ -1,3 +1,4 @@
+// << ======== Verificador de Login Padrão ======== >>
 function verifyLogin() {
   const loginValue = document.querySelector('#login');
   const senhaValue = document.querySelector('#senha');
@@ -21,9 +22,23 @@ function verifyCheckBox() {
   }
 }
 
+// << ======== Ativar e desativar o botão Enviar ======== >>
 function sendInformations() {
   const checkBox = document.querySelector('#agreement');
   checkBox.addEventListener('click', verifyCheckBox);
 }
-
 sendInformations();
+
+// << ======== Contador ======== >>
+// Source: https://stackoverflow.com/questions/14086398/count-textarea-characters/40395706#40395706
+function contador1() {
+  const textArea = document.getElementById('textarea');
+  const tamanhoMax = textArea.getAttribute('maxlength');
+  const counter = document.getElementById('counter');
+  counter.innerHTML = tamanhoMax;
+
+  textArea.addEventListener('keyup', function contador() {
+    document.getElementById('counter').innerHTML = (tamanhoMax - this.value.length);
+  });
+}
+contador1();

@@ -17,7 +17,7 @@
   </form>
 </header>
 <main>
-   <form action="" method="GET" id="evaluation-form">
+   <form action="#" method="GET" id="evaluation-form">
       <h3>Forms</h2>
         <div id="container-forms">
           <input type="text" name="nome" id="input-name" placeholder="Nome">
@@ -105,8 +105,11 @@
         <label for="9"><input type="radio" name="rate" value="9" id="9">9 </label>
         <label for="10"><input type="radio" name="rate" value="10" id="10">10 </label>
       </label>
-      <label class="textarea" for="textarea">Deixe seu comentário:
-        <textarea name="textarea" id="" cols="30" rows="10" maxlength="500" placeholder="500"></textarea>
+      <div class="textarea-box">
+        <label class="textarea" for="textarea">Deixe seu comentário:
+          <textarea name="textarea" id="textarea" cols="30" rows="10" maxlength="500" placeholder="500"></textarea>
+          <span id="counter" class="count"></span>
+      </div>
       </label>
       <label for="agreement" id="label-infos">Você concorda com o uso das informações acima?
         <input type="checkbox" name="" id="agreement">
