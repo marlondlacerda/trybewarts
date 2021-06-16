@@ -27,3 +27,21 @@ main {
 #trybewarts-forms-logo {
   height: 500px;
 }
+
+.container-family {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-checkbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.check-box {
+  width: 240px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
