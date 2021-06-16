@@ -1,13 +1,11 @@
 function verifyLogin() {
   const loginValue = document.querySelector('#login');
   const senhaValue = document.querySelector('#senha');
-  const loginPadrao = 'tryber@teste.com';
-  const senhaPadrao = '123456';
 
-  if (loginValue.value !== loginPadrao && senhaValue.value !== senhaPadrao) {
-    alert('Login ou senha inválidos.');
-  } else {
+  if (loginValue.value === 'tryber@teste.com' && senhaValue.value === '123456') {
     alert('Olá, Tryber!');
+  } else {
+    alert('Login ou senha inválidos.');
   }
 }
 const loginVerify = document.querySelector('#buttonLogin');
