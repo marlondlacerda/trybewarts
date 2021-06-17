@@ -63,6 +63,27 @@ footer {
   justify-content: space-between;
 }
 
-#rate {
+.textarea-box {
+  position: relative;
   display: inline-block;
+}
+
+.textarea-box span {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+}
+
+/* estiliza o contador */
+.count {
+  background-color: rgb(93, 201, 145);
+  color: white;
+  font-size: 15px;
+  padding: 10px 15px;
+  line-height: 12px;
+  height: 14px;
+  text-align: center;
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  font-weight: 400;
 }
