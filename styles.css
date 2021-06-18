@@ -87,3 +87,7 @@ footer {
   border-bottom-left-radius: 4px;
   font-weight: 400;
 }
+
+li {
+  list-style: none;
+}
