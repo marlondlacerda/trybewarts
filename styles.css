@@ -39,6 +39,10 @@
   background-color: rgb(78, 44, 131);
   border-color: rgb(78, 44, 131);
 }
+.btn-outline-primary.disabled, .btn-outline-primary:disabled {
+ color: rgb(78, 44, 131);
+ background-color: transparent;
+}
 
 main {
   display: flex;
