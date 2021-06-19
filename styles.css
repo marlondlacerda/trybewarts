@@ -1,8 +1,9 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Suez One', serif;
+  font-family: Suez One, serif;
 }
+
 .header {
   display: flex;
   background-color: rgb(50, 167, 145);
@@ -14,6 +15,7 @@
 .header img {
   width: 75px;
 }
+
 #trybewarts-header-title {
   color: white;
 }
@@ -23,23 +25,24 @@
   flex-grow: 0;
 }
 
-.trybewarts-login input{
+.trybewarts-login input {
   margin-right: 10px;
 }
 
-.btn-outline-primary{
+.btn-outline-primary {
   color: rgb(78, 44, 131);
   border-color: rgb(78, 44, 131);
 }
 
 .btn-outline-primary:hover {
-  color: #fff;
+  color: white;
   background-color: rgb(78, 44, 131);
   border-color: rgb(78, 44, 131);
 }
 
 main {
   display: flex;
+  justify-content: center;
 }
 
 #evaluation-form {
@@ -54,7 +57,7 @@ main {
 }
 
 #trybewarts-forms-logo {
-  height: 500px;
+  height: 700px;
 }
 
 .textarea {
