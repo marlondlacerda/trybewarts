@@ -1,12 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Suez One', serif;
+}
 .header {
   display: flex;
   background-color: rgb(50, 167, 145);
   justify-content: space-between;
   align-items: center;
+  padding: 10px 100px 10px 255px;
+}
+
+.header img {
+  width: 75px;
+}
+#trybewarts-header-title {
+  color: white;
 }
 
 .trybewarts-login {
   display: flex;
+  flex-grow: 0;
+}
+
+.trybewarts-login input{
+  margin-right: 10px;
+}
+
+.btn-outline-primary{
+  color: rgb(78, 44, 131);
+  border-color: rgb(78, 44, 131);
+}
+
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: rgb(78, 44, 131);
+  border-color: rgb(78, 44, 131);
 }
 
 main {
@@ -86,4 +115,8 @@ footer {
   border-top-right-radius: 4px;
   border-bottom-left-radius: 4px;
   font-weight: 400;
+}
+
+li {
+  list-style: none;
 }
