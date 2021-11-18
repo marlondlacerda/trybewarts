@@ -1,86 +1,73 @@
-// << ======== Verificador de Login Padrão ======== >>
-function verifyLogin() {
-  const loginValue = document.querySelector('#login');
-  const senhaValue = document.querySelector('#senha');
+const loginVerify = document.querySelector('#buttonLogin');
+const loginValue = document.querySelector('#login');
+const passwordValue = document.querySelector('#senha');
+const checkBox = document.querySelector('#agreement');
+const sendBtn = document.querySelector('#submit-btn');
+const counter = document.getElementById('counter');
+const textArea = document.getElementById('textarea');
+const maximumSize = textArea.getAttribute('maxlength');
+const formUser = document.querySelector('#evaluation-form');
+const inputs = document.querySelectorAll('input');
+const house = document.querySelector('#house');
+const textarea = document.querySelector('#textarea');
 
-  if (loginValue.value === 'tryber@teste.com' && senhaValue.value === '123456') {
+// << ======== Verificador de Login Padrão ======== >>
+const verifyLogin = (event) => {
+  event.preventDefault();
+  if (loginValue.value === 'tryber@teste.com' && passwordValue.value === '123456') {
     alert('Olá, Tryber!');
   } else {
     alert('Login ou senha inválidos.');
   }
-}
-const loginVerify = document.querySelector('#buttonLogin');
-loginVerify.addEventListener('click', verifyLogin);
+};
 
-function verifyCheckBox() {
-  const checkBox = document.querySelector('#agreement');
-  const sendBtn = document.querySelector('#submit-btn');
-  if (checkBox.checked === true) {
-    sendBtn.disabled = false;
-  } else {
-    sendBtn.disabled = true;
-  }
-}
-
-// << ======== Ativar e desativar o botão Enviar ======== >>
-function sendInformations() {
-  const checkBox = document.querySelector('#agreement');
-  checkBox.addEventListener('click', verifyCheckBox);
-}
-sendInformations();
-
-// << ======== Contador ======== >>
 // Source: https://stackoverflow.com/questions/14086398/count-textarea-characters/40395706#40395706
-function contador1() {
-  const textArea = document.getElementById('textarea');
-  const tamanhoMax = textArea.getAttribute('maxlength');
-  const counter = document.getElementById('counter');
-  counter.innerHTML = tamanhoMax;
+const counterFunction = ({ value }) => {
+  counter.innerHTML = (maximumSize - value.length);
+};
 
-  textArea.addEventListener('keyup', function contador() {
-    document.getElementById('counter').innerHTML = (tamanhoMax - this.value.length);
-  });
-}
-contador1();
-
-const botao = document.querySelector('#submit-btn');
-const principal = document.querySelector('main');
-const form = document.createElement('form');
-form.id = 'evaluation-form';
-
-function getTxtInformations() {
-  botao.addEventListener('click', () => {
-    const nome = document.getElementById('input-name').value;
-    const sobrenome = document.getElementById('input-lastname').value;
-    const email = document.querySelector('#input-email').value;
-    const casa = document.querySelector('#house').value;
-    const familia = document.querySelector('input[type=radio][name=family]:checked').value;
-    const posicaoElementos = document.createElement('li');
-    posicaoElementos.innerText = `Nome: ${nome} ${sobrenome}
-    Email: ${email}
-    Casa: ${casa}
-    Família: ${familia}`;
-    form.appendChild(posicaoElementos);
-  });
-}
-getTxtInformations();
-
-function checkBoxInformations() {
-  botao.addEventListener('click', () => {
-    const conteudo = document.querySelectorAll('input[type=checkbox][name=mycheckboxes]:checked');
-    const conteudo2 = [];
-    for (let index = 0; index < conteudo.length; index += 1) {
-      conteudo2.push(conteudo[index].value);
+const checkNameFromInputs = (inputsReceived, type) => {
+  let inputsChecked = [];
+  for (let index = 0; index < inputsReceived.length; index += 1) {
+    if (inputsReceived[index].name === type && inputsReceived[index].checked) {
+      inputsChecked.push(inputsReceived[index].value);
     }
-    const nota = document.querySelector('input[type=radio][name=rate]:checked').value;
-    const textArea = document.querySelector('#textarea').value;
-    const posicaoElementos = document.createElement('li');
-    posicaoElementos.innerText = `Matérias: ${conteudo2.join(', ')}
-    Avaliação: ${nota}
-    Observações: ${textArea}`;
-    principal.textContent = ' ';
-    principal.appendChild(form);
-    form.appendChild(posicaoElementos);
-  });
-}
-checkBoxInformations();
+  }
+  inputsChecked = inputsChecked.join(', ');
+  return inputsChecked;
+};
+
+const generateForm = (user) => {
+  const { name, lastname, email, family, materias, rate } = user;
+  formUser.innerHTML = '';
+  formUser.className = 'newformContainer';
+  formUser.innerHTML += (`<span class='newForm'>Nome: ${name.value} ${lastname.value}</span>`);
+  formUser.innerHTML += (`<span class='newForm'>Email: ${email.value}</span>`);
+  formUser.innerHTML += (`<span class='newForm'>Casa: ${house.value}</span>`);
+  formUser.innerHTML += (`<span class='newForm'>Família: ${family}</span>`);
+  formUser.innerHTML += (`<span class='newForm'>Matérias: ${materias}</span>`);
+  formUser.innerHTML += (`<span class='newForm'>Avaliação: ${rate}</span>`);
+  formUser.innerHTML += (`<span class='newForm'>Observações: ${textarea.value}</span>`);
+};
+
+const getInformation = (event) => {
+  event.preventDefault();
+  const user = {
+    name: document.querySelector('#input-name'),
+    lastname: document.querySelector('#input-lastname'),
+    email: document.querySelector('#input-email'),
+    family: checkNameFromInputs(inputs, 'family'),
+    materias: checkNameFromInputs(inputs, 'content'),
+    rate: checkNameFromInputs(inputs, 'rate'),
+  };
+  generateForm(user);
+};
+
+checkBox.addEventListener('click', () => {
+  sendBtn.disabled = !sendBtn.disabled;
+});
+
+formUser.addEventListener('submit', getInformation);
+
+loginVerify.addEventListener('click', verifyLogin);
+textArea.addEventListener('keyup', ({ target }) => counterFunction(target));
