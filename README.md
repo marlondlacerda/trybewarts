@@ -27,7 +27,7 @@
 ---
 
 <div align="center">
-  <img width="700px" src="./images/preview.png">
+  <img src="./images/preview.png">
 </div>
 
 ## Habilidades
